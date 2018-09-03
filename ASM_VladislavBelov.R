@@ -5,6 +5,9 @@ library(fitdistrplus)
 library(nortest)
 library(goft)
 library(GGally)
+library(broom)
+library(ggfortify)
+library(car)
 
 
 # getwd()
@@ -146,5 +149,46 @@ ks.test(data$per.brozek, data$per.siri, paired = FALSE, alternative = "two.sided
 data.regression <- cbind(data[, c("per.siri", "age", "weight.total", "height", "adiposity", "weight.fatfree"), with = FALSE],
                          data.c)
 
+# Simple 2-variable linear regression
+lm.simple <- lm (per.siri ~ c.abdomen + weight.total + 1, data = data.regression)
+summary(lm.simple)
+autoplot(lm.simple)
+lillie.test(residuals(lm.simple))
+
+new_data <- data.frame(cbind(sort(data.regression$c.abdomen), sort(data.regression$weight.total)))
+names(new_data) <- list("c.abdomen", "weight.total")
+lm.simple.conf <- predict(lm.simple, newdata = new_data, interval = "confidence")
+
+ggplot(data.regression, aes(x=c.abdomen, y=per.siri)) +
+  geom_point(size=1, alpha=0.7) +
+  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,1], colour = "Fit")) + 
+  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,2], colour = "Confidence Interval")) +
+  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,3], colour = "Confidence Interval"))
++
+  labs(color="Lines:") + 
+  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,1], colour = "Fit")) + 
+  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,2], colour = "Confidence Interval")) + 
+  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,3], colour = "Confidence Interval")) + 
+  theme_bw() +
+  xlab("Nitrogen Oxides Concentration (parts per 10 million)") +
+  ylab("Log - Mean Value of Owner-Occupied Homes") +
+  ggtitle("Linear Model with Log-Transformation of the Dependant Variable (Tolerance - 5%)") +
+  coord_cartesian(xlim=c(0.385, 0.8710), ylim=c(1.5, 4))
+
+
+
+
+
+
+
+
 lm.all <- lm(per.siri ~ -1 + ., data = data.regression)
 summary(lm.all)
+stepAIC(lm.all)
+
+lm.postaic <- lm(formula = per.siri ~ weight.total + adiposity + weight.fatfree + 
+                   c.chest + c.abdomen + c.thigh + c.ankle + c.biceps + c.forearm - 
+                   1, data = data.regression)
+summary(lm.postaic)
+
+plot(lm.all)
