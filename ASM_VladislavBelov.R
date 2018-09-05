@@ -8,6 +8,8 @@ library(GGally)
 library(broom)
 library(ggfortify)
 library(car)
+library(cowplot)
+library(scatterplot3d)
 
 
 # getwd()
@@ -29,6 +31,7 @@ data[, height := height * 2.54]
 ## Numerical descriptive statistics
 summary(data)
 
+# Auxiliary columns definition
 data[, fat := weight.total - weight.fatfree]
 data[, fat.factor := cut(data$fat, breaks=c(0, 10, 16, 21, Inf), right = FALSE, 
                          labels = c("0-9", "10-15", "16-20", "21+"))]
@@ -54,7 +57,8 @@ ggplot(data = data) +
                  color = "black", size = 1.0, alpha=0.75, binwidth = 0.0065) + 
   labs(title = "Body Density Histogram", 
        x = "Density, [g/cm^3]", y = "Frequency",
-       fill = "Total Weight, [kg]")
+       fill = "Total Weight, [kg]") + 
+  theme_grey()
 
 # Body weight vs. Siri
 ggplot(alpha = 0.75) + 
@@ -62,7 +66,8 @@ ggplot(alpha = 0.75) +
              size = 3, pch = 21, alpha = 0.75) +
   labs(title = "Body Weight vs. Fat Percentage", 
        x = "Total Body Weight, [kg]", y = "Body Fat Percentage by Siri", 
-       fill = "Amount of Fat, [kg]")
+       fill = "Amount of Fat, [kg]") + 
+  theme_grey()
 
 # Age vs. Fat Percentage
 ggplot(data = data, aes(x = age.factor, y = per.siri)) + 
@@ -70,7 +75,8 @@ ggplot(data = data, aes(x = age.factor, y = per.siri)) +
                outlier.size=4, notch = TRUE, fill = "coral2") + 
   labs(title = "Age vs. Fat Percentage", 
        x = "Age, [years]", y = "Body Fat Percentage by Siri", 
-       fill = "Weight, [kg]")
+       fill = "Weight, [kg]") + 
+  theme_grey()
 
 # Body weight vs. density
 ggplot(data = data) + 
@@ -78,19 +84,43 @@ ggplot(data = data) +
              size = 3, pch = 21, alpha = 0.75) + 
   labs(title = "Body Weight vs. Density", 
        x = "Total Body Weight, [kg]", y = "Density, [g/cm^3]", 
-       fill = "Amount of Fat, [kg]")
+       fill = "Amount of Fat, [kg]") + 
+  theme_grey()
 
 # Fat-free body mass histogram
 ggplot(data = data) +
   geom_histogram(mapping = aes(x = weight.fatfree), 
                  color = "black", size = 1.0, alpha=0.75) + 
   labs(title = "Fat-Free Weight Histogram", 
-       x = "Fat-Free Weight, [kg]", y = "Frequency")
+       x = "Fat-Free Weight, [kg]", y = "Frequency") + 
+  theme_grey()
 
 # Pairwise comparison of circumference data and its influence on Siri's doby fat percentage
 ggpairs(cbind(data.c, data[, c("per.siri"), with = FALSE]), 
         columnLabels = c("Neck", "Chest", "Abdomen", "Hip", "Thigh", "Knee", "Ankle", "Biceps", 
-                         "Forearm", "Wrist", "Siri"), title = "Pairwise Comparison of Circumference Data")
+                         "Forearm", "Wrist", "Siri"), 
+        title = "Pairwise Comparison of Circumference Data") + 
+  theme_grey()
+
+# Boxplot for Siri's and Brozek's body fat percentage
+temp_DT <- melt(data[, c("per.siri", "per.brozek"), with = FALSE], measure.vars = c("per.siri", "per.brozek"))
+temp_DT[, variable := ifelse(variable == "per.siri", "Siri", "Brozek")]
+ggplot(data = temp_DT, aes(x=variable, y=value)) + 
+  geom_boxplot(aes(fill = variable), outlier.colour="black", outlier.shape=16,
+               outlier.size=2, notch=TRUE) + 
+  theme_grey() + 
+  labs(title = "Siri's and Brozek's Fat Percentage", 
+       x = "", y = "Fat Percentage", fill = "Equation Type")
+
+# Comparative CDF plot for 'per.brozek' and 'per.siri'
+ggplot(data = data) + 
+  stat_ecdf(mapping = aes(per.brozek, color = "chocolate3"), geom = "step", size = 1.25) + 
+  stat_ecdf(mapping = aes(per.siri, color="royalblue4"), geom = "step", size = 1.25) + 
+  scale_colour_manual(name = 'Legend', 
+                      values =c('chocolate3'='chocolate3','royalblue4'='royalblue4'), labels = c('Brozek CDF','Siri CDF')) + 
+  theme_grey() + 
+  labs(title = "Comparative CDF Plot", 
+       x = "Values", y = "Probability")
 
 
 # Data analysis -----------------------------------------------------------
@@ -98,8 +128,20 @@ ggpairs(cbind(data.c, data[, c("per.siri"), with = FALSE]),
 # Independence of total weight and age
 age_weight.table <- table(data$age.factor, data$fat.factor)
 chisq.test(age_weight.table)
-
 normalized.age <- (data$age-min(data$age))/(max(data$age)-min(data$age))
+
+# Distribution of the total body weight ('weight.total')
+descdist(data$weight.total, discrete = FALSE)
+weight.fit.gamma <- fitdist(data$weight.total, distr = "gamma", method = "mle")
+params.gamma <- as.list(weight.fit.gamma$estimate)
+weight_fit_plot <- plot(weight.fit.gamma)
+ggplot(data = data, aes(sample = weight.total)) + 
+  theme_grey() + 
+  stat_qq(mapping = aes(x = weight.total), size = 1.5, alpha = 0.75) + 
+  stat_qq_line(color = "royalblue3", size = 1.25, alpha = 0.85) + 
+  stat_qq_line(distribution = qgamma, dparams = params.gamma, color = "orange", size = 1.25, alpha = 0.85)
+ks.test(data$weight.total, "pgamma", shape=39.7315165, rate = 0.4895573)
+lillie.test(data$weight.total) # normal distribution is also acceptable
 
 # Distribution of the variable 'density'
 descdist(data$density, discrete = FALSE)
@@ -134,12 +176,7 @@ fat.fit.lnorm <- fitdist(data$c.chest, distr = "lnorm", method = "mle")
 fat_fit_plot <- plot(fat.fit.lnorm)
 lnorm_test(data$c.chest)
 
-# Comparative CDF plot for 'per.brozek' and 'per.siri'
-ggplot(data = data) + 
-  stat_ecdf(mapping = aes(per.brozek, color = "chocolate3"), geom = "step", size = 1.25) + 
-  stat_ecdf(mapping = aes(per.siri, color="royalblue4"), geom = "step", size = 1.25) + 
-  scale_colour_manual(name = 'Legend', 
-                      values =c('chocolate3'='chocolate3','royalblue4'='royalblue4'), labels = c('Brozek CDF','Siri CDF'))
+
 wilcox.test(data$per.brozek, data$per.siri, paired = FALSE, alternative = "two.sided")
 ks.test(data$per.brozek, data$per.siri, paired = FALSE, alternative = "two.sided")
 
@@ -147,48 +184,38 @@ ks.test(data$per.brozek, data$per.siri, paired = FALSE, alternative = "two.sided
 # Multivariate Linear Regression ------------------------------------------
 
 data.regression <- cbind(data[, c("per.siri", "age", "weight.total", "height", "adiposity", "weight.fatfree"), with = FALSE],
-                         data.c)
+                         data.c)[weight.total <150]
 
 # Simple 2-variable linear regression
 lm.simple <- lm (per.siri ~ c.abdomen + weight.total + 1, data = data.regression)
 summary(lm.simple)
-autoplot(lm.simple)
+autoplot(lm.simple) + theme_grey()
+confint(lm.simple, level = 0.95)
 lillie.test(residuals(lm.simple))
+s3d <-scatterplot3d(data.regression$c.abdomen, data.regression$weight.total, data.regression$per.siri, pch=16, highlight.3d=TRUE,
+                    type="h", box=FALSE, main="2-Variable Linear Regression", 
+                    xlab = "Abdomen CC, [cm]",
+                    ylab = "Total Weight, [kg]", 
+                    zlab = "Siri")
+s3d$plane3d(lm.simple)
 
-new_data <- data.frame(cbind(sort(data.regression$c.abdomen), sort(data.regression$weight.total)))
-names(new_data) <- list("c.abdomen", "weight.total")
-lm.simple.conf <- predict(lm.simple, newdata = new_data, interval = "confidence")
-
-ggplot(data.regression, aes(x=c.abdomen, y=per.siri)) +
-  geom_point(size=1, alpha=0.7) +
-  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,1], colour = "Fit")) + 
-  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,2], colour = "Confidence Interval")) +
-  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,3], colour = "Confidence Interval"))
-+
-  labs(color="Lines:") + 
-  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,1], colour = "Fit")) + 
-  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,2], colour = "Confidence Interval")) + 
-  geom_line(aes(x=new_data$c.abdomen, y=lm.simple.conf[,3], colour = "Confidence Interval")) + 
-  theme_bw() +
-  xlab("Nitrogen Oxides Concentration (parts per 10 million)") +
-  ylab("Log - Mean Value of Owner-Occupied Homes") +
-  ggtitle("Linear Model with Log-Transformation of the Dependant Variable (Tolerance - 5%)") +
-  coord_cartesian(xlim=c(0.385, 0.8710), ylim=c(1.5, 4))
-
-
-
-
-
-
-
-
+# All variables included (except for Brozek's percentage and density)
 lm.all <- lm(per.siri ~ -1 + ., data = data.regression)
 summary(lm.all)
-stepAIC(lm.all)
+confint(lm.all, level = 0.95)
+autoplot(lm.all) + theme_grey()
+lillie.test(residuals(lm.all))
 
-lm.postaic <- lm(formula = per.siri ~ weight.total + adiposity + weight.fatfree + 
-                   c.chest + c.abdomen + c.thigh + c.ankle + c.biceps + c.forearm - 
-                   1, data = data.regression)
+# Propose a better model
+cor(data.regression$weight.total, data.regression$weight.fatfree) # High correlation
+stepAIC(update(lm.all, . ~ . - weight.total))
+# Neck CC is not significant enough
+summary(lm(formula = per.siri ~ age + adiposity + weight.fatfree + c.neck + 
+             c.abdomen + c.hip + c.knee + c.biceps + c.wrist - 1, data = data.regression)) 
+lm.postaic <- lm(formula = per.siri ~ age + adiposity + weight.fatfree + 
+                   c.abdomen + c.hip + c.knee + c.biceps + c.wrist - 1, data = data.regression)
+
 summary(lm.postaic)
-
-plot(lm.all)
+confint(lm.postaic, level = 0.95)
+autoplot(lm.postaic) + theme_grey()
+lillie.test(residuals(lm.postaic))

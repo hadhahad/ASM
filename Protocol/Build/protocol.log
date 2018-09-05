@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.6.16)  4 SEP 2018 00:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.6.16)  5 SEP 2018 02:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -260,6 +260,18 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
 \symupright=\mathgroup6
 )
+(c:/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip59
+\multirow@cntb=\count114
+\multirow@dima=\skip60
+\bigstrutjot=\dimen133
+)
+(c:/texlive/2018/texmf-dist/tex/latex/chngcntr/chngcntr.sty
+Package: chngcntr 2018/04/09 v1.1a change counter resetting
+Package chngcntr Info: \counterwithout already defined.
+(chngcntr)             Quitting chngcntr on input line 21.
+)
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/txfonts.sty
 Package: txfonts 2008/01/22 v3.2.1
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 21.
@@ -364,60 +376,54 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 
 (c:/texlive/2018/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2018/06/05 3.22 Babel common definitions
-\babel@savecnt=\count114
-\U@D=\dimen133
+\babel@savecnt=\count115
+\U@D=\dimen134
 
 (c:/texlive/2018/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count115
+\bbl@dirlevel=\count116
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
-))
-(c:/texlive/2018/texmf-dist/tex/generic/babel-czech/czech.ldf
-Language: czech 2008/07/06 v3.1a Czech support from the babel system
-Package babel Info: Making " an active character on input line 172.
-\cs@wordlen=\count116
-Package babel Info: Making - an active character on input line 226.
-))
+)))
 (Build/protocol.aux)
 \openout1 = `protocol.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 67.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 67.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 71.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 71.
 
  (c:/texlive/2018/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 67.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 67.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 71.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 71.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 67.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 67.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 71.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 71.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 67.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 67.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 71.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 71.
 
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Try loading font information for T1+txr on input line 67.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Try loading font information for T1+txr on input line 71.
 
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/t1txr.fd
 File: t1txr.fd 2000/12/15 v3.1
@@ -463,13 +469,13 @@ Package geometry Warning: The marginal notes overrun the paper.
 (c:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count117
-\scratchdimen=\dimen134
+\scratchdimen=\dimen135
 \scratchbox=\box33
 \nofMPsegments=\count118
 \nofMParguments=\count119
 \everyMPshowfont=\toks34
 \MPscratchCnt=\count120
-\MPscratchDim=\dimen135
+\MPscratchDim=\dimen136
 \MPnumerator=\count121
 \makeMPintoPDFobject=\count122
 \everyMPtoPDFconversion=\toks35
@@ -530,103 +536,181 @@ Package caption Info: End \AtBeginDocument code.
  [1
 
 {c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 127.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 131.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsya on input line 127.
+LaTeX Font Info:    Try loading font information for U+txsya on input line 131.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyb on input line 127.
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 131.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/utxsyb.fd
 File: utxsyb.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 127
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 131
 .
 
 (c:/texlive/2018/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
-LaTeX Font Info:    Try loading font information for U+txmia on input line 127.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 131.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 127.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 131.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
-)
-<Images/FIGURES/body_density_histogram.pdf, id=10, 722.7pt x 433.62pt>
+) [1]
+<Images/FIGURES/body_density_histogram.pdf, id=14, 722.7pt x 433.62pt>
 File: Images/FIGURES/body_density_histogram.pdf Graphic file (type pdf)
 <use Images/FIGURES/body_density_histogram.pdf>
 Package pdftex.def Info: Images/FIGURES/body_density_histogram.pdf  used on inp
-ut line 178.
-(pdftex.def)             Requested size: 483.69687pt x 290.21953pt.
-<Images/FIGURES/pairwise_comparison.pdf, id=11, 722.7pt x 722.7pt>
-File: Images/FIGURES/pairwise_comparison.pdf Graphic file (type pdf)
-<use Images/FIGURES/pairwise_comparison.pdf>
-Package pdftex.def Info: Images/FIGURES/pairwise_comparison.pdf  used on input 
-line 185.
-(pdftex.def)             Requested size: 483.69687pt x 483.69922pt.
-<Images/FIGURES/total_weight_vs_siri.pdf, id=12, 722.7pt x 433.62pt>
-File: Images/FIGURES/total_weight_vs_siri.pdf Graphic file (type pdf)
-<use Images/FIGURES/total_weight_vs_siri.pdf>
-Package pdftex.def Info: Images/FIGURES/total_weight_vs_siri.pdf  used on input
- line 192.
-(pdftex.def)             Requested size: 483.69687pt x 290.21953pt.
-<Images/FIGURES/total_weight_vs_density.pdf, id=13, 722.7pt x 433.62pt>
-File: Images/FIGURES/total_weight_vs_density.pdf Graphic file (type pdf)
-<use Images/FIGURES/total_weight_vs_density.pdf>
-Package pdftex.def Info: Images/FIGURES/total_weight_vs_density.pdf  used on in
-put line 200.
-(pdftex.def)             Requested size: 483.69687pt x 290.21953pt.
- [1]
-<Images/FIGURES/descdist_density.pdf, id=17, 722.7pt x 578.16pt>
-File: Images/FIGURES/descdist_density.pdf Graphic file (type pdf)
-<use Images/FIGURES/descdist_density.pdf>
-Package pdftex.def Info: Images/FIGURES/descdist_density.pdf  used on input lin
-e 213.
-(pdftex.def)             Requested size: 411.14528pt x 328.91943pt.
-<Images/FIGURES/density_fitdist.pdf, id=18, 722.7pt x 433.62pt>
+ut line 200.
+(pdftex.def)             Requested size: 362.77264pt x 217.663pt.
+<Images/FIGURES/density_fitdist.pdf, id=15, 722.7pt x 578.16pt>
 File: Images/FIGURES/density_fitdist.pdf Graphic file (type pdf)
 <use Images/FIGURES/density_fitdist.pdf>
 Package pdftex.def Info: Images/FIGURES/density_fitdist.pdf  used on input line
- 220.
+ 207.
+(pdftex.def)             Requested size: 386.95897pt x 309.56396pt.
+ [2 <./Images/FIGURES/body_density_histogram.pdf> <./Images/FIGURES/density_fit
+dist.pdf>]
+<Images/FIGURES/fat_percentage_boxplot.pdf, id=33, 722.7pt x 722.7pt>
+File: Images/FIGURES/fat_percentage_boxplot.pdf Graphic file (type pdf)
+<use Images/FIGURES/fat_percentage_boxplot.pdf>
+Package pdftex.def Info: Images/FIGURES/fat_percentage_boxplot.pdf  used on inp
+ut line 217.
+(pdftex.def)             Requested size: 338.58632pt x 338.58835pt.
+<Images/FIGURES/cdf_brozek_siri.pdf, id=34, 722.7pt x 578.16pt>
+File: Images/FIGURES/cdf_brozek_siri.pdf Graphic file (type pdf)
+<use Images/FIGURES/cdf_brozek_siri.pdf>
+Package pdftex.def Info: Images/FIGURES/cdf_brozek_siri.pdf  used on input line
+ 224.
+(pdftex.def)             Requested size: 362.77264pt x 290.21732pt.
+ [3 <./Images/FIGURES/fat_percentage_boxplot.pdf> <./Images/FIGURES/cdf_brozek_
+siri.pdf>]
+<Images/FIGURES/brozek_fitdist.pdf, id=48, 722.7pt x 578.16pt>
+File: Images/FIGURES/brozek_fitdist.pdf Graphic file (type pdf)
+<use Images/FIGURES/brozek_fitdist.pdf>
+Package pdftex.def Info: Images/FIGURES/brozek_fitdist.pdf  used on input line 
+234.
+(pdftex.def)             Requested size: 386.95897pt x 309.56396pt.
+<Images/FIGURES/siri_fitdist.pdf, id=49, 722.7pt x 578.16pt>
+File: Images/FIGURES/siri_fitdist.pdf Graphic file (type pdf)
+<use Images/FIGURES/siri_fitdist.pdf>
+Package pdftex.def Info: Images/FIGURES/siri_fitdist.pdf  used on input line 24
+1.
+(pdftex.def)             Requested size: 386.95897pt x 309.56396pt.
+ [4 <./Images/FIGURES/brozek_fitdist.pdf> <./Images/FIGURES/siri_fitdist.pdf>]
+<Images/FIGURES/total_weight_vs_siri.pdf, id=65, 722.7pt x 433.62pt>
+File: Images/FIGURES/total_weight_vs_siri.pdf Graphic file (type pdf)
+<use Images/FIGURES/total_weight_vs_siri.pdf>
+Package pdftex.def Info: Images/FIGURES/total_weight_vs_siri.pdf  used on input
+ line 257.
 (pdftex.def)             Requested size: 483.69687pt x 290.21953pt.
- [2 <./Images/FIGURES/body_density_histogram.pdf>] [3 <./Images/FIGURES/pairwis
-e_comparison.pdf>]
-[4 <./Images/FIGURES/total_weight_vs_siri.pdf> <./Images/FIGURES/total_weight_v
-s_density.pdf>] [5 <./Images/FIGURES/descdist_density.pdf> <./Images/FIGURES/de
-nsity_fitdist.pdf>] (Build/protocol.aux) ) 
+<Images/FIGURES/total_weight_vs_density.pdf, id=66, 722.7pt x 433.62pt>
+File: Images/FIGURES/total_weight_vs_density.pdf Graphic file (type pdf)
+<use Images/FIGURES/total_weight_vs_density.pdf>
+Package pdftex.def Info: Images/FIGURES/total_weight_vs_density.pdf  used on in
+put line 265.
+(pdftex.def)             Requested size: 483.69687pt x 290.21953pt.
+<Images/FIGURES/pairwise_comparison.pdf, id=67, 722.7pt x 722.7pt>
+File: Images/FIGURES/pairwise_comparison.pdf Graphic file (type pdf)
+<use Images/FIGURES/pairwise_comparison.pdf>
+Package pdftex.def Info: Images/FIGURES/pairwise_comparison.pdf  used on input 
+line 274.
+(pdftex.def)             Requested size: 483.69687pt x 483.69922pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5 <./Images/FIGURES/total_weight_vs_siri.pdf> <./Images/FIGURES/total_weight_v
+s_density.pdf>]
+<Images/FIGURES/descdist_density.pdf, id=89, 722.7pt x 578.16pt>
+File: Images/FIGURES/descdist_density.pdf Graphic file (type pdf)
+<use Images/FIGURES/descdist_density.pdf>
+Package pdftex.def Info: Images/FIGURES/descdist_density.pdf  used on input lin
+e 289.
+(pdftex.def)             Requested size: 411.14528pt x 328.91943pt.
+
+Overfull \vbox (194.46083pt too high) has occurred while \output is active []
+
+
+[6 <./Images/FIGURES/pairwise_comparison.pdf> <./Images/FIGURES/descdist_densit
+y.pdf>]
+LaTeX Font Info:    Try loading font information for U+fplmbb on input line 341
+.
+ (c:/texlive/2018/texmf-dist/tex/latex/psnfss/ufplmbb.fd
+File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
+)
+<Images/FIGURES/3d_linear_regression.pdf, id=105, 722.7pt x 542.025pt>
+File: Images/FIGURES/3d_linear_regression.pdf Graphic file (type pdf)
+<use Images/FIGURES/3d_linear_regression.pdf>
+Package pdftex.def Info: Images/FIGURES/3d_linear_regression.pdf  used on input
+ line 351.
+(pdftex.def)             Requested size: 362.77264pt x 272.07874pt.
+ [7]
+<Images/FIGURES/2var_linear_regression.pdf, id=114, 1084.05pt x 722.7pt>
+File: Images/FIGURES/2var_linear_regression.pdf Graphic file (type pdf)
+<use Images/FIGURES/2var_linear_regression.pdf>
+Package pdftex.def Info: Images/FIGURES/2var_linear_regression.pdf  used on inp
+ut line 358.
+(pdftex.def)             Requested size: 459.51054pt x 306.34393pt.
+ [8 <./Images/FIGURES/3d_linear_regression.pdf> <./Images/FIGURES/2var_linear_r
+egression.pdf>]
+<Images/FIGURES/multivar_linear_regression_all.pdf, id=129, 1084.05pt x 722.7pt
+>
+File: Images/FIGURES/multivar_linear_regression_all.pdf Graphic file (type pdf)
+
+<use Images/FIGURES/multivar_linear_regression_all.pdf>
+Package pdftex.def Info: Images/FIGURES/multivar_linear_regression_all.pdf  use
+d on input line 420.
+(pdftex.def)             Requested size: 459.51054pt x 306.34393pt.
+ [9]
+<Images/FIGURES/multivar_linear_regression_final.pdf, id=134, 1084.05pt x 722.7
+pt>
+File: Images/FIGURES/multivar_linear_regression_final.pdf Graphic file (type pd
+f)
+<use Images/FIGURES/multivar_linear_regression_final.pdf>
+Package pdftex.def Info: Images/FIGURES/multivar_linear_regression_final.pdf  u
+sed on input line 462.
+(pdftex.def)             Requested size: 459.51054pt x 306.34393pt.
+ [10 <./Images/FIGURES/multivar_linear_regression_all.pdf>] [11 <./Images/FIGUR
+ES/multivar_linear_regression_final.pdf>] (Build/protocol.aux) ) 
 Here is how much of TeX's memory you used:
- 6160 strings out of 492646
- 86652 string characters out of 6133325
- 162752 words of memory out of 5000000
- 9845 multiletter control sequences out of 15000+600000
- 81682 words of font info for 128 fonts, out of 8000000 for 9000
+ 6164 strings out of 492646
+ 88510 string characters out of 6133325
+ 162899 words of memory out of 5000000
+ 9828 multiletter control sequences out of 15000+600000
+ 88304 words of font info for 141 fonts, out of 8000000 for 9000
  1152 hyphenation exceptions out of 8191
- 41i,8n,39p,381b,285s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dist/fonts/enc
-/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb><c:/t
-exlive/2018/texmf-dist/fonts/type1/public/txfonts/rtxsc.pfb><c:/texlive/2018/te
-xmf-dist/fonts/type1/public/txfonts/txsy.pfb><c:/texlive/2018/texmf-dist/fonts/
-type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/ut
-mr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Build/protocol.pdf (6 pages, 970223 bytes).
+ 41i,18n,39p,753b,283s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/201
+8/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/m
+athpazo/fplmbb.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/txfonts/rtxmi
+.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb><c:/texliv
+e/2018/texmf-dist/fonts/type1/public/txfonts/rtxsc.pfb><c:/texlive/2018/texmf-d
+ist/fonts/type1/public/txfonts/txex.pfb><c:/texlive/2018/texmf-dist/fonts/type1
+/public/txfonts/txsy.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/txfonts
+/txsyc.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/
+texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
+urw/times/utmri8a.pfb>
+Output written on Build/protocol.pdf (12 pages, 1347019 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 193 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
