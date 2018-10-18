@@ -128,7 +128,7 @@
 
 \section{Outline}\label{sec:outline}
 
-In this paper we will perform an analysis of the dataset which contains simple measurements of $252$ men. Circumferences of body parts, age, weight and fat percentage are a part of the dataset. After providing descriptive statistics in section \ref{sec:desc} and performing a more detailed examination of some selected variables in section \ref{sec:analysis}, we will attempt to fit percentage of body fat to some of the body measurements in section \ref{sec:regression}. Body fat percentage can be measured using either Siri's equation or Brozek's equation:
+In this paper we will perform an analysis of the dataset which contains simple measurements of $252$ men. Circumferences of body parts, age, weight and fat percentage are a part of the dataset.\footnote{Inches were converted to centimeters, pounds to kilograms.} After providing descriptive statistics in section \ref{sec:desc} and performing a more detailed examination of some selected variables in section \ref{sec:analysis}, we will attempt to fit percentage of body fat to some of the body measurements in section \ref{sec:regression}. Body fat percentage can be measured using either Siri's equation or Brozek's equation:
 
 \begin{equation*}
 	\begin{split}
@@ -141,7 +141,7 @@ In this paper we will perform an analysis of the dataset which contains simple m
 
 \subsection{Numerical Analysis of Selected Variables}
 
-In this section a general numerical overview of the dataset population is be provided. Basic information about population's weight and height is available in Tab.~\ref{tab:desc1}. Age is also considered a continuous instance, nevertheless, for illustrative purposes we have categorized it, and results can be seen in Tab.~\ref{tab:desc2}.\footnote{Inches were converted to centimeters, pounds to kilograms.} 
+In this section a general numerical overview of the dataset population is be provided. Basic information about population's weight and height is available in Tab.~\ref{tab:desc1}.\footnote{Observation 42 had a suspicious value of height equal to $74.93\;cm$. The height was recalculated using the adiposity index and the total weight and was set to $176.349\;cm$.} Age is also considered a continuous instance, nevertheless, for illustrative purposes we have categorized it, and results can be seen in Tab.~\ref{tab:desc2}. 
 
 \medskip
 
@@ -155,7 +155,7 @@ In this section a general numerical overview of the dataset population is be pro
 		\hline 
 		Fat-Free Weight, [kg] & 48.04 & 59.58 & 64.21 & 65.19 & 69.8 & 109.09   \\ 
 		\hline 
-		Height, [cm] & 74.93 & 173.35 & 177.8 & 178.18 & 183.51 & 197.49   \\ 
+		Height, [cm] & 162.6 & 173.4 & 177.8 & 178.6 & 183.5 & 197.49   \\ 
 		\hline 
 	\end{tabular} 
 	\caption{Numerical descriptive statistics for weight and height of the population.}	
@@ -333,26 +333,17 @@ Results of tests are displayed in the table below:
 	\end{tabular} 
 \end{table*}
 
-According to both of the performed tests, no evidence against the null hypothesis is present. This entitles us to perform a normal distribution fit and perform the parametric Kolmogorov-Smirnov test (KS-test) to confirm, that the fitted distribution is the true one:
-
-\begin{equation*}
-	\text{H}_{0}: density = \mathcal{N} (\mu_{d},\,\sigma^{\,2}_{d}) \text{ vs. }
-	\text{H}_{1}: density \neq \mathcal{N} (\mu_{d},\,\sigma^{\,2}_{d}).
-\end{equation*}
-
-\medskip
-
-Estimated parameters of the normal distribution, their confidence intervals and results of the KS-test are available below:
+According to both of the performed tests, no evidence against the null hypothesis is present. This entitles us to conclude, that the distribution of the body density is truly normal. Estimated parameter values and respective confidence intervals are available in the table below:
 
 \begin{table*}[ht!]
 	\centering
-	\begin{tabular}{|c||c||c|c||c|}
+	\begin{tabular}{|c||c||p{2cm}|p{2cm}|}
 		\hline 
-		Parameter &  Estimated Value & \multicolumn{2}{c||}{Confidence Interval, $95\%$}  & KS-test p-value \\ 
+		Parameter &  Estimated Value & \multicolumn{2}{c|}{Confidence Interval, $95\%$}   \\ 
 		\hline \hline 
-		Mean, $\mu_{d}$ & 1.055574 & 1.053229 &  1.057919 & \multirow{2}{*}{0.8413} \\ 
+		Mean, $\mu_{d}$ & 1.055574 & 1.053229 &  1.057919  \\ 
 		\cline{1-4}
-		Standard Deviation, $\sigma_{d}$ & 0.018994 & 0.017356 &  0.020631 & \\ 
+		Standard Deviation, $\sigma_{d}$ & 0.018994 & 0.017356 &  0.020631  \\ 
 		\hline
 	\end{tabular} 
 \end{table*}
@@ -382,21 +373,21 @@ In this section we will perform normality tests for fat percentage given by Siri
 	\end{tabular} 
 \end{table*}
 
-Tests entitle us to conclude, that the null hypothesis (normality of the distribution) cannot be rejected for both Siri's and Brozek's fat percentage. This enables us to proceed to KS-test:
+Tests entitle us to conclude, that the null hypothesis (normality of the distribution) cannot be rejected for both Siri's and Brozek's fat percentage - the distribution is truly normal. Its estimated parameters are displayed below:
 
 \begin{table*}[ht!]
 	\centering
-	\begin{tabular}{|c||c||c||c|c||c|}
+	\begin{tabular}{|c||c||c||p{2cm}|p{2cm}|}
 		\hline 
-		Variable & Parameter &  Estimated Value & \multicolumn{2}{c||}{Confidence Interval, $95\%$}  & KS-test p-value \\ 
+		Variable & Parameter &  Estimated Value & \multicolumn{2}{c|}{Confidence Interval, $95\%$}  \\ 
 		\hline \hline 
-		\multirow{2}{*}{Siri} & Mean, $\mu_{s}$ & 19.150794 & 18.119590 &  20.182 & \multirow{2}{*}{0.2159} \\ 
+		\multirow{2}{*}{Siri} & Mean, $\mu_{s}$ & 19.150794 & 18.119590 &  20.182 \\ 
 		\cline{2-5}
-		& Standard Deviation, $\sigma_{s}$ & 8.352119 & 7.622948 &  9.08129 & \\ 
+		& Standard Deviation, $\sigma_{s}$ & 8.352119 & 7.622948 &  9.08129 \\ 
 		\hline \hline
-		\multirow{2}{*}{Brozek} & Mean, $\mu_{b}$ & 18.938492 & 17.983425 &  19.893560 & \multirow{2}{*}{0.8193} \\ 
+		\multirow{2}{*}{Brozek} & Mean, $\mu_{b}$ & 18.938492 & 17.983425 &  19.893560 \\ 
 		\cline{2-5}
-		& Standard Deviation, $\sigma_{b}$ & 7.735462 & 7.060127 &  8.410796 & \\ 
+		& Standard Deviation, $\sigma_{b}$ & 7.735462 & 7.060127 &  8.410796 \\ 
 		\hline
 	\end{tabular} 
 \end{table*}
@@ -408,17 +399,26 @@ P-values allow us to conclude, that fat percentage given by both Siri's and Broz
 In this section we will perform the unpaired two-sample Kolmogorov-Smirnov test to determine, if distributions of fat percentage given by Siri's and Brozek's equations are equal. From the comparative diagram of cumulative distribution functions (Fig.~\ref{fig:cdf_brozek_siri}) it is obvious, that no significant horizontal shifts are present. Thus, the KS-test will provide a sufficient and reliable result:
 
 \begin{equation*}
-	\text{H}_{0}: F=G \text{ vs. }
-	\text{H}_{1}: F \neq G
+	\text{H}_{0}^{\text{(KS)}}: F=G \text{ vs. }
+	\text{H}_{1}^{\text{(KS)}}: F \neq G
 \end{equation*}
 
 \medskip
 \noindent
-where $F$ and $G$ are distribution functions of fat percentage calculated using Siri's and Brozek's equations, respectively.\footnote{We already know, that those distributions are normal, and their parameters have already been estimated. However, the unpaired two-sample KS-test is nonparametric.} Results of the test are positive, as the p-value is equal to $0.9375$ which means, that no strong evidence against the null hypothesis is existent - distributions are similar.\footnote{The unpaired two-sample Wilcoxon test works well to detect horizontal shifts in compared CDFs. We did not use this test to reach the conclusion, however, its results are also positive: p-value$\,=0.7789$.}
+where $F$ and $G$ are distribution functions of fat percentage calculated using Siri's and Brozek's equations, respectively.\footnote{We already know, that those distributions are normal, and their parameters have already been estimated. However, the unpaired two-sample KS-test is nonparametric.} Results of the test are positive, as the p-value is equal to $0.9375$ which means, that no strong evidence against the null hypothesis $\text{H}_{0}^{\text{(KS)}}$ is existent - distributions are similar.\footnote{The unpaired two-sample Wilcoxon test works well to detect horizontal shifts in compared CDFs. We did not use this test to reach the conclusion, however, its results are also positive: p-value$\,=0.7789$.} Now that we know, that two normal distributions are equal, the t-test will be performed to confirm, that their mean values are equal:
+
+\begin{equation*}
+\text{H}_{0}^{\text{(t)}}: \mu_{s}=\mu_{b} \text{ vs. }
+\text{H}_{1}^{\text{(t)}}: \mu_{s} \neq \mu_{b}.
+\end{equation*}
+
+\medskip
+
+The p-value of the t-test is equal to $0.7678$, hence, the null hypothesis $\text{H}_{0}^{\text{(t)}}$ cannot be rejected. Distributions are truly equal.
 
 \subsection{Total Weight Distribution}
 
-In the scope of this section the distribution of the total weight of the population will be determined. As seen in section \ref{sec:total_weight} we are unable to determine which distribution fits to the total weight better: gamma or normal. Taking a closer look at the Q-Q plot (Fig.~\ref{fig:qq_total_weight}) gives us a clue, that fitting with gamma distribution appears to be slightly more competent.\footnote{The point at the top-right part of both diagrams is an obvious outlier.} 
+In the scope of this section the distribution of the total weight of the population will be determined. As seen in section \ref{sec:total_weight} we are unable to determine which distribution fits to the total weight better: gamma or normal. Taking a closer look at the Q-Q plot (Fig.~\ref{fig:qq_total_weight}) gives us a clue, that fitting with gamma distribution appears to be slightly more competent.\footnote{The point at the top-right part of both diagrams is an obvious outlier. It will be removed from the dataset in the scope of section \ref{sec:regression}.} 
 
 \begin{figure}[H]
 	\centering
@@ -427,7 +427,7 @@ In the scope of this section the distribution of the total weight of the populat
 	\label{fig:qq_total_weight}
 \end{figure}
 
-However, we will test both distributions using Chi-squared and Kolmogorov-Smirnov tests:
+However, we will test both distributions using the chi-squared goodness of fit test:
 
 \begin{equation*}
 \text{H}_{0}^{(G)}: weight = Gamma(\alpha_{w}, \, \beta_{w}) \text{ vs. }
@@ -440,22 +440,19 @@ However, we will test both distributions using Chi-squared and Kolmogorov-Smirno
 
 \begin{table*}[ht!]
 	\centering
-	\begin{tabular}{|c||c||c|c|}
+	\begin{tabular}{|c||c|c|}
 		\hline 
-		Tested Distribution & Name of the Test & Value of the Statistic & p-valiue \\ 
+		Tested Distribution & Value of the Statistic & p-value \\ 
 		\hline \hline
-		\multirow{2}{*}{Gamma} & Chi-squared & 2.9615 & 0.9975 \\ 
-		\cline{2-4} 
-		& Kolmogorov-Smirnov & 0.039134 & 0.835 \\ 
-		\hline \hline
-		\multirow{2}{*}{Normal} & Chi-squared & 7.3248 & 0.8881 \\ 
-		\cline{2-4} 
-		& Kolmogorov-Smirnov & 0.060868 & 0.308 \\ 
+		Gamma & 2.9615 & 0.9975 \\ 
 		\hline
+		Normal & 7.3248 & 0.8881 \\ 
+		\hline
+	
 	\end{tabular} 
 \end{table*}
 
-P-values of tests do not suggest to reject either $\text{H}_{0}^{(G)}$ or $\text{H}_{0}^{(N)}$. On the other hand, they favor gamma distribution (especially, KS-test: p-value$^{(G)}$ is greater than p-value$^{(N)}$ by $0.527$). That is the main reason behind us choosing gamma distribution as the best fit to the total weight of the population. In the table below estimated values of distribution parameters are displayed:
+P-values of tests do not suggest to reject either $\text{H}_{0}^{(G)}$ or $\text{H}_{0}^{(N)}$. On the other hand, they favor gamma distribution (p-value$^{(G)}$ is greater than p-value$^{(N)}$ by $0.1094$). That is the main reason behind us choosing gamma distribution as the best fit to the total weight of the population. In the table below estimated values of distribution parameters are displayed:
 
 \begin{table*}[ht!]
 	\centering
@@ -497,17 +494,18 @@ which, with dropped mathematical notation for the response and explanatory varia
 
 Results of the estimation can be observed in the table below. The value of the R-squared statistic is equal to $0.72$. This indicates, that $72\%$ of the variability of the response data is explained around its mean which is quite adequate for our purposes. 
 
+\renewcommand{\arraystretch}{1.2}
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c||c||c|c|}
+	\begin{tabular}{|c||c||p{2cm}|p{2cm}|c|}
 		\hline 
-		Parameter &  Estimated Value & \multicolumn{2}{c|}{Confidence Interval, $95\%$}  \\ 
+		Parameter &  Estimated Value & \multicolumn{2}{c|}{Confidence Interval, $95\%$} & p-value \\ 
 		\hline \hline 
-		Intercept, $\beta_{0}$ & -47.67 & -52.86 &  -42.48 \\ 
+		Intercept, $\beta_{0}$ & -47.67 & -52.86 &  -42.48 & $3.16 \cdot 10^{-47}$  \\ 
 		\hline 
-		Abdomen CC, $\beta_{1}$ & 0.98 & 0.87 &  1.09 \\ 
+		Abdomen CC, $\beta_{1}$ & 0.98 & 0.87 &  1.09 & $3.63 \cdot 10^{-45}$ \\ 
 		\hline 
-		Total Weight, $\beta_{2}$ & -0.29 & -0.38 & -0.2 \\ 
+		Total Weight, $\beta_{2}$ & -0.29 & -0.38 & -0.2 & $1.5 \cdot 10^{-9}$ \\ 
 		\hline 
 	\end{tabular} 
 \caption{Estimated values for the 2-variable linear regression.}
@@ -556,43 +554,44 @@ Now we will consider the model with almost all available variables and once agai
 
 \medskip
 \noindent
-or $Y = X \beta + e$ in a matrix form. Estimated values are displayed in the Tab.~\ref{tab:multivar_regression}. The R-squared statistic is quite high for the observed model and is equal to $0.995$ which means, that almost all of the response data variability is explained. Nonetheless, a lot of confidence intervals for estimated parameters contain $0$. Moreover, residuals are not normally distributed (see Fig.~\ref{fig:multivar_linear_regression_all}), as the null hypothesis in the Lilliefors test is rejected due to the p-value equal to $5.101 \cdot 10^{-7}$. Thus, linear regression cannot be used for this set of explanatory variables.
+or $Y = X \beta + e$ in a matrix form. Estimated values are displayed in the Tab.~\ref{tab:multivar_regression}. The R-squared statistic is quite high for the observed model and is equal to $0.995$ which means, that almost all of the response data variability is explained. Nonetheless, a lot of confidence intervals for estimated parameters contain $0$. Moreover, residuals are not normally distributed (see Fig.~\ref{fig:multivar_linear_regression_all}), as the null hypothesis in the Lilliefors test is rejected due to the p-value equal to $1.461 \cdot 10^{-6}$. Thus, linear regression cannot be used for this set of explanatory variables.
 
+\renewcommand{\arraystretch}{1.2}
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c||c||c|c|}
+	\begin{tabular}{|c||c||p{2cm}|p{2cm}|c|}
 		\hline 
-		Parameter &  Estimated Value & \multicolumn{2}{c|}{Confidence Interval, $95\%$}  \\ 
+		Parameter &  Estimated Value & \multicolumn{2}{c|}{Confidence Interval, $95\%$} & p-value \\ 
 		\hline \hline 
-		Age, $\beta_{1}$ & 0.01 & -0.01 &  0.04 \\ 
+		Age, $\beta_{1}$ & 0.015 & -0.006 &  0.036 & 0.16 \\ 
 		\hline 
-		Total Weight, $\beta_{2}$ & 0.89 & 0.84 &  0.95 \\ 
+		Total Weight, $\beta_{2}$ & 0.893 & 0.838 &  0.949 & $6.46 \cdot 10^{-87}$\\ 
 		\hline 
-		Height, $\beta_{3}$ & 0.01 & -0.01 & 0.04 \\ 
+		Height, $\beta_{3}$ & 0.038 & -0.016 & 0.092 & 0.17 \\ 
 		\hline
-		Adiposity, $\beta_{4}$ & -0.27 & -0.47 & -0.06  \\
+		Adiposity, $\beta_{4}$ & -0.159 & -0.457 & 0.139 & 0.3 \\
 		\hline 
-		Fat-free weight, $\beta_{5}$ & -1.23 & -1.29 & -1.18  \\
+		Fat-free weight, $\beta_{5}$ & -1.233 & -1.288 & -1.177 & $3.34 \cdot 10^{-115}$\\
 		\hline
-		Neck CC, $\beta_{6}$ & 0.05 & -0.1 & 0.2  \\
+		Neck CC, $\beta_{6}$ & 0.035 & -0.117 & 0.188  & 0.65 \\
 		\hline
-		Chest CC, $\beta_{7}$ & 0.02 & -0.04 & 0.09  \\
+		Chest CC, $\beta_{7}$ & 0.011 & -0.06 & 0.083 & 0.75 \\
 		\hline
-		Abdomen CC, $\beta_{8}$ & 0.1 & 0.03 & 0.18  \\
+		Abdomen CC, $\beta_{8}$ & 0.104 & 0.033 & 0.174  & 0.004 \\
 		\hline
-		Hip CC, $\beta_{9}$ & -0.01 & -0.09 & 0.07  \\
+		Hip CC, $\beta_{9}$ & -0.039 & -0.134 & 0.056 & 0.42 \\
 		\hline
-		Thigh CC, $\beta_{10}$ & 0.13 & 0.04 & 0.23  \\
+		Thigh CC, $\beta_{10}$ & 0.13 & 0.036 & 0.225 & 0.007 \\
 		\hline
-		Knee CC, $\beta_{11}$ & 0.05 & -0.1 & 0.21  \\
+		Knee CC, $\beta_{11}$ & 0.031 & -0.129 & 0.191 & 0.7 \\
 		\hline
-		Ankle CC, $\beta_{12}$ & 0.12 & -0.02 & 0.26  \\
+		Ankle CC, $\beta_{12}$ & 0.102 & -0.043 & 0.247 & 0.17 \\
 		\hline
-		Biceps CC, $\beta_{13}$ & 0.12 & 0.01 & 0.23  \\
+		Biceps CC, $\beta_{13}$ & 0.114 & 0.003 & 0.225 & 0.04 \\
 		\hline
-		Forearm CC, $\beta_{14}$ & 0.08 & -0.05 & 0.22  \\
+		Forearm CC, $\beta_{14}$ & 0.072 & -0.064 & 0.208 & 0.3 \\
 		\hline
-		Wrist CC, $\beta_{15}$ & -0.07 & -0.42 & 0.28  \\
+		Wrist CC, $\beta_{15}$ & -0.087 & -0.44 & 0.267 & 0.63\\
 		\hline
 	\end{tabular} 
 	\caption{Estimated values for the multivariate linear regression with all parameters included.}
@@ -603,36 +602,35 @@ or $Y = X \beta + e$ in a matrix form. Estimated values are displayed in the Tab
 
 \subsubsection{The Final Model}
 
-To make regression sufficient and authorized to be used, we exclude the total weight from the model due to its strong correlation ($0.76$) with the fat-free weight and run a stepwise algorithm to choose the best model by the Akaike Information Criterion. After excluding variables with low significance, we construct the final linear model using only  $8$ columns of the provided dataset: age, adiposity, fat-free weight, abdomen CC, hip CC, knee CC, biceps CC and wrist CC. Estimates of parameters are available in Tab.~\ref{tab:multivar_regression_final}. Fortunately, the R-squared statistic has remained high: $R^{2} = 0.9766$, thus, almost all of the variability of the response variable is accounted for by our model.
+To make regression sufficient and authorized to be used, we exclude the total weight from the model due to its strong correlation ($0.76$) with the fat-free weight and run a stepwise algorithm to choose the best model by the Akaike Information Criterion. After excluding variables with low significance, we construct the final linear model using only  $7$ columns of the provided dataset: age, height, fat-free weight, abdomen CC, Knee CC, biceps CC and wrist CC. Estimates of parameters are available in Tab.~\ref{tab:multivar_regression_final}. Fortunately, the R-squared statistic has remained high: $R^{2} = 0.9762$, thus, almost all of the variability of the response variable is accounted for by our model.
 
 \medskip
 
-As can be seen, confidence intervals no longer contain zeros. As for residuals (see Fig.~\ref{fig:multivar_linear_regression_final}), their normality is evident. Moreover, the Lilliefors test with statistical significance set to $5\%$ has resulted in our inability to reject the null hypothesis, as the p-value is equal to $0.4$. Hence, residuals distribution may be considered normal and we are eligible to use this model to perform multivariate linear regression.
+As can be seen, confidence intervals no longer contain zeros. As for residuals (see Fig.~\ref{fig:multivar_linear_regression_final}), their normality is evident. Moreover, the Lilliefors test with statistical significance set to $5\%$ has resulted in our inability to reject the null hypothesis, as the p-value is equal to $0.3947$. Hence, residuals distribution may be considered normal and we are eligible to use this model to perform multivariate linear regression.
 
 \newpage
 
 \vspace*{\fill}
+\renewcommand{\arraystretch}{1.2}
 \begin{table}[ht!]
 	\centering
-	\begin{tabular}{|c||c||c|c|}
+	\begin{tabular}{|c||c||p{2cm}|p{2cm}|c|}
 		\hline 
-		Parameter &  Estimated Value & \multicolumn{2}{c|}{Confidence Interval, $95\%$}  \\ 
+		Parameter &  Estimated Value & \multicolumn{2}{c|}{Confidence Interval, $95\%$} & p-value \\ 
 		\hline \hline 
-		Age, $\beta_{1}$ & -0.05 & -0.09 &  -0.01 \\ 
+		Age, $\beta_{1}$ & -0.051 & -0.091 &  -0.012 & 0.012\\ 
 		\hline 
-		Adiposity, $\beta_{2}$ & 0.52 & 0.19 & 0.85  \\
+		Height, $\beta_{2}$ & -0.117 & -0.174 & -0.06  & $6.86 \cdot 10^{-5}$ \\
 		\hline 
-		Fat-free weight, $\beta_{3}$ & -0.57 & -0.65 & -0.49  \\
+		Fat-free weight, $\beta_{3}$ & -0.558 & -0.638 & -0.478 & $3.48 \cdot 10^{-32}$ \\
 		\hline
-		Abdomen CC, $\beta_{4}$ & 0.72 & 0.6 & 0.84  \\
+		Abdomen CC, $\beta_{4}$ & 0.747 & 0.681 & 0.814 & $2.5 \cdot 10^{-60}$ \\
 		\hline
-		Hip CC, $\beta_{5}$ & -0.19 & -0.34 & -0.03  \\
+		Knee CC, $\beta_{6}$ & 0.397 & 0.083 & 0.71 & 0.013 \\
 		\hline
-		Knee CC, $\beta_{6}$ & 0.34 & 0.02 & 0.66  \\
+		Biceps CC, $\beta_{7}$ & 0.442 & 0.228 & 0.656 & $6.5 \cdot 10^{-5}$ \\
 		\hline
-		Biceps CC, $\beta_{7}$ & 0.38 & 0.16 & 0.61  \\
-		\hline
-		Wrist CC, $\beta_{8}$ & -1.54 & -2.13 & -0.95  \\
+		Wrist CC, $\beta_{8}$ & -1.09 & -1.749 & -0.434 & 0.001 \\
 		\hline
 	\end{tabular} 
 	\caption{Estimated values for the multivariate linear regression in the final model.}
@@ -661,11 +659,17 @@ As can be seen, confidence intervals no longer contain zeros. As for residuals (
 
 \section{Conclusion}
 
-In this paper an analysis of the population of $252$ men was performed based on their body parts circumference, weight, age and other parameters: 
+In this paper an analysis of the population of $252$ men was performed based on their body parts circumference, weight, age and other parameters.
 
 \begin{itemize}
-	\item We have provided descriptive statistics and detailed analysis of selected variables;
-	\item Fitting of body fat percentage using multivariate linear regression was carried out.
+	\item We have provided descriptive statistics and detailed analysis of selected variables. Results are the following:
+		\begin{itemize}
+			\item Distribution of the body density is $\mathcal{N} (\mu_{d},\,\sigma^{\,2}_{d})$;
+			\item Distribution of the total weight is $Gamma(\alpha_{w}, \, \beta_{w})$;
+			\item Distributions of body fat percentage given by Siri's and Brozek's equations are equal to each other $\mathcal{N} (\mu_{s},\,\sigma^{\,2}_{s})$ and $\mathcal{N} (\mu_{b},\,\sigma^{\,2}_{b})$, respectively. 
+		\end{itemize}
+	\item Fits to body fat percentage using multivariate linear regression were carried out: \\
+	In the final model estimated parameters for some of explanatory variables are negative (namely, age, height, fat-free weight, wrist CC). Increasing age, height and muscle mass (part of the fat-free weight) obviously have a negative effect on the fat level in the body. Fortunately a logical explanation for the wrist circumference may also be existent, as wrists of working out men (consequently, men who have relatively small fat percentage) are usually grown in size due to weight lifting.
 \end{itemize}
 
 %\newpage{}

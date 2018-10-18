@@ -28,6 +28,7 @@ names(data) <- c("per.brozek", "per.siri", "density", "age", "weight.total", "he
 data[, weight.total := weight.total * 0.453592]
 data[, weight.fatfree:= weight.fatfree * 0.453592]
 data[, height := height * 2.54]
+data$height[[42]] <- 176.349  # calculated using the adiposity index and the total weight
 
 ## Numerical descriptive statistics
 summary(data)
@@ -142,8 +143,7 @@ params.gamma <- as.list(weight.fit.gamma$estimate)
 params.norm <- as.list(weight.fit.norm$estimate)
 plot(weight.fit.norm)
 plot(weight.fit.gamma)
-ks.test(jitter(data$weight.total), "pgamma", shape=39.7315165, rate = 0.4895573)
-ks.test(jitter(data$weight.total), "pnorm", mean = 81.15868, sd = 13.30421)
+# the chi-squared goodness of fit test
 h <- hist(data[weight.total < 150]$weight.total, breaks = 20)
 p.gamma <- rollapply(pgamma(h$breaks, shape = 39.7315165, rate = 0.4895573), 2, function(x) x[2]-x[1])
 p.norm <- rollapply(pnorm(h$breaks, mean = 81.15868, sd = 13.30421), 2, function(x) x[2]-x[1])
@@ -206,6 +206,7 @@ lnorm_test(data$c.chest)  # rejected, but the fit is quite good
 # Distribution equality for 'per.siri' and 'p.brozek'
 wilcox.test(data$per.brozek, data$per.siri, paired = FALSE, alternative = "two.sided")
 ks.test(jitter(data$per.siri), jitter(data$per.brozek), paired = FALSE, alternative = "two.sided")
+t.test(data$per.siri, data$per.brozek, var.equal = TRUE)
 
 
 # Multivariate Linear Regression ------------------------------------------
@@ -217,6 +218,7 @@ data.regression <- cbind(data[, c("per.siri", "age", "weight.total", "height", "
 # Simple 2-variable linear regression
 lm.simple <- lm (per.siri ~ c.abdomen + weight.total + 1, data = data.regression)
 summary(lm.simple)
+summary(lm.simple)$coefficients # to obtain precise p-values
 autoplot(lm.simple) + theme_grey()
 confint(lm.simple, level = 0.95)
 lillie.test(residuals(lm.simple))
@@ -231,6 +233,7 @@ s3d$plane3d(lm.simple)
 # All variables included (except for Brozek's percentage and density)
 lm.all <- lm(per.siri ~ -1 + ., data = data.regression)
 summary(lm.all)
+summary(lm.all)$coefficients
 confint(lm.all, level = 0.95)
 autoplot(lm.all) + theme_grey()
 lillie.test(residuals(lm.all))
@@ -239,13 +242,11 @@ lillie.test(residuals(lm.all))
 # Propose a better model
 cor(data.regression$weight.total, data.regression$weight.fatfree) # High correlation
 stepAIC(update(lm.all, . ~ . - weight.total))
-# Neck CC is not significant enough
-summary(lm(formula = per.siri ~ age + adiposity + weight.fatfree + c.neck + 
-             c.abdomen + c.hip + c.knee + c.biceps + c.wrist - 1, data = data.regression)) 
-lm.postaic <- lm(formula = per.siri ~ age + adiposity + weight.fatfree + 
-                   c.abdomen + c.hip + c.knee + c.biceps + c.wrist - 1, data = data.regression)
+lm.postaic <- lm(formula = per.siri ~ age + height + weight.fatfree + c.abdomen + 
+                   c.knee + c.biceps + c.wrist - 1, data = data.regression)
 
 summary(lm.postaic)
+summary(lm.postaic)$coefficients
 confint(lm.postaic, level = 0.95)
 autoplot(lm.postaic) + theme_grey()
 lillie.test(residuals(lm.postaic))
